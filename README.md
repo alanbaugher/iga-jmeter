@@ -1,4 +1,4 @@
-# IGA JMeter Benchmark
+# IGA r15 JMeter Benchmark
 
 Repeatable account-provisioning performance tests for **Broadcom/Symantec Identity Governance and Administration (IGA / Identity Manager)** using **Apache JMeter 5.6.3** and **OpenJDK 21** on Ubuntu/Debian.
 
