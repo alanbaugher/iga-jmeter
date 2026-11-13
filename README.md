@@ -140,23 +140,6 @@ The JMeter installer downloads the official 5.6.3 archive and verifies its SHA-5
 
 To suppress the JMeter Log4j package-scanning status warning, `000a_install-apache-jmeter-5-6-3.sh` changes the `status="WARN"` setting to `status="ERROR"` in `apache-jmeter-5.6.3/bin/log4j2.xml`, retaining a `.bak` backup when the change is made. Re-running the installer applies this adjustment to an existing installation as well.
 
-## Security and source control
 
-- Keep the GitHub repository **private** unless publication is explicitly approved.
-- Never commit `.env`, passwords, access tokens, production identities, unredacted JMeter results, or raw IGA diagnostic logs.
-- Review `im-benchmark.jmx`, Python scripts, and CLI files for embedded endpoints and secrets before each release.
-- Rotate any credential accidentally exposed in logs, chats, or version control.
-- Use `.env.example` only as a placeholder template.
-- Keep generated `results/`, the downloaded JMeter installation, and packaged archives out of Git.
-- No open-source license is granted by this repository unless a license is explicitly added by the authorized owner.
 
-## Updating GitHub
 
-```bash
-git status
-git add README.md
-git commit -m "Document IGA benchmark setup, commands, and diagnostics"
-git push origin main
-```
-
-If you change other source files, review the staged diff before committing them.
