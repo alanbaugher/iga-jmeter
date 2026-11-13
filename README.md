@@ -116,6 +116,7 @@ Compare successful, completed account operations—not just submitted HTTP reque
 
 ## JDBC pool monitoring and startup diagnostics
 **Important Note:  Use of 'igactl start idm'  or the IGA xpress console to restart IM will remove any jboss-cli processes  
+**Ensure that the string "CA IAM FW Startup Sequence Complete" exists in IM server.log prior to using the jboss-cli processes  
 
 Two WildFly CLI files are included for separate purposes:
 
