@@ -2,7 +2,10 @@
 
 Repeatable account-provisioning performance tests for **Broadcom/Symantec Identity Governance and Administration (IGA / Identity Manager)** using **Apache JMeter 5.6.3** and **OpenJDK 21** on Ubuntu/Debian.
 
-The benchmark combines a JMeter test plan with a Python orchestration/reporting utility. It supports account creation and modification phases, cleanup and recovery, and correlation of benchmark runs with IGA server, router, and user-store logs. Additional WildFly CLI scripts support JDBC datasource statistics and targeted startup troubleshooting.
+The benchmark combines a JMeter test plan with a Python orchestration/reporting utility. It supports account creation and modification phases, cleanup and recovery, and correlation of benchmark runs with IGA server, router, and user-store logs. Additional WildFly CLI scripts support JDBC datasource statistics and targeted startup troubleshooting.  
+
+<img width="1998" height="1055" alt="image" src="https://github.com/user-attachments/assets/2e85ec9e-a7f5-482c-916d-7b4ce2de15fa" />  
+
 
 > **Use only in an authorized, non-production test environment.** Tests create, modify, and delete benchmark accounts. Review configuration, credentials, cleanup scope, and monitoring overhead before running.
 
