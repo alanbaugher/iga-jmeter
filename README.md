@@ -115,6 +115,7 @@ Compare successful, completed account operations—not just submitted HTTP reque
 **An HTTP 503 during preflight is an application availability failure, not a throughput measurement.** Do not interpret zero created accounts in that situation as the system's sustainable provisioning rate. Restore endpoint health, validate a single-user run, and only then increase concurrency.
 
 ## JDBC pool monitoring and startup diagnostics
+**Important Note:  Use of 'igactl start idm'  or the IGA xpress console to restart IM will remove any jboss-cli processes  
 
 Two WildFly CLI files are included for separate purposes:
 
