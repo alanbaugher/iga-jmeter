@@ -35,6 +35,9 @@ The JMeter distribution (`apache-jmeter-5.6.3/`), local `.env`, and generated re
 
 The launcher uses `/usr/lib/jvm/java-21-openjdk-$(dpkg --print-architecture)` and the repository-local `apache-jmeter-5.6.3/bin/jmeter`. It deliberately overrides `JAVA_HOME` and `JMETER` on each run. Java 21 is pinned to avoid Java 25/Groovy bytecode compatibility problems observed with this test setup; leave the JMeter distribution's Groovy libraries intact.
 
+<img width="1623" height="329" alt="image" src="https://github.com/user-attachments/assets/7bf87ee7-9a2b-467e-987d-e36a24e63712" />  
+
+
 ## Quick start
 
 Clone the repository, then run these commands **from the repository directory**:
