@@ -127,6 +127,11 @@ For `pool-idm` analysis in DX Operational Observability / DX APM, correlate JMet
 
 JDBC spy tracing can increase logging volume and affect timings; disable it before establishing an unbiased performance baseline.
 
+<img width="1912" height="909" alt="image" src="https://github.com/user-attachments/assets/a9774c88-f98b-4bec-9b51-fd2bad239c23" />  
+
+
+
+
 ## Installation notes
 
 The JMeter installer downloads the official 5.6.3 archive and verifies its SHA-512 checksum. It does not overwrite an existing installation in place. When run against an existing installation, it also checks the Log4j configuration.
