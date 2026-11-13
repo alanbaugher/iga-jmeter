@@ -118,7 +118,13 @@ The Python runner checks for cleanup inventory markers in the JMeter log and can
 
 Compare successful, completed account operations—not just submitted HTTP requests—with latency, errors, and the duration of the measured phase. Record the worker count and test configuration for each run.
 
+<img width="1392" height="813" alt="image" src="https://github.com/user-attachments/assets/9d88d8a1-9ee4-4249-a59d-2c2463171c61" />  
+
+
 **An HTTP 503 during preflight is an application availability failure, not a throughput measurement.** Do not interpret zero created accounts in that situation as the system's sustainable provisioning rate. Restore endpoint health, validate a single-user run, and only then increase concurrency.
+
+
+
 
 ## JDBC pool monitoring and startup diagnostics
 **Important Note:  Use of 'igactl start idm'  or the IGA xpress console to restart IM will remove any jboss-cli processes  
