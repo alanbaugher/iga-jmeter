@@ -150,8 +150,10 @@ JDBC spy tracing can increase logging volume and affect timings; disable it befo
 
 The JMeter installer downloads the official 5.6.3 archive and verifies its SHA-512 checksum. It does not overwrite an existing installation in place. When run against an existing installation, it also checks the Log4j configuration.
 
-To suppress the JMeter Log4j package-scanning status warning, `000a_install-apache-jmeter-5-6-3.sh` changes the `status="WARN"` setting to `status="ERROR"` in `apache-jmeter-5.6.3/bin/log4j2.xml`, retaining a `.bak` backup when the change is made. Re-running the installer applies this adjustment to an existing installation as well.
+To suppress the JMeter Log4j package-scanning status warning, `000a_install-apache-jmeter-5-6-3.sh` changes the `status="WARN"` setting to `status="ERROR"` in `apache-jmeter-5.6.3/bin/log4j2.xml`, retaining a `.bak` backup when the change is made. Re-running the installer applies this adjustment to an existing installation as well.  
 
+## IM VST View  
 
+<img width="1918" height="1165" alt="image" src="https://github.com/user-attachments/assets/91751b0a-6fbe-4003-aa78-b12918fc7bb5" />  
 
 
