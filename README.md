@@ -143,6 +143,9 @@ JDBC spy tracing can increase logging volume and affect timings; disable it befo
 
 <img width="1912" height="909" alt="image" src="https://github.com/user-attachments/assets/a9774c88-f98b-4bec-9b51-fd2bad239c23" />  
 
+*** Ignore these ERROR messages while IM is starting up.  The objects are not ready at start of the J2EE (JBoss/Wildfly)  
+<img width="2000" height="548" alt="image" src="https://github.com/user-attachments/assets/6c8f21ec-78a7-4811-a12d-fded08903780" />  
+
 
 
 
