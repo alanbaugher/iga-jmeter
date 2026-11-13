@@ -1,0 +1,59 @@
+
+# JMeter generated results
+*.jtl
+*.jmeter.log
+jmeter.log
+results/
+reports/
+html-report/
+test-output/
+apache-jmeter-5.6.3/
+
+# Sensitive configuration
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Local environment configuration
+config/local/
+config/*-local.properties
+user.properties
+system.properties
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Python analysis
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Large diagnostics and exports
+heapdumps/
+threaddumps/
+diagnostics/raw/
+*.hprof
+*.heapdump
+*.dmp
+

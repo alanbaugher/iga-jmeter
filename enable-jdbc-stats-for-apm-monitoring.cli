@@ -1,0 +1,58 @@
+# IGA r15 use of jboss-cli.sh to update Wildfly monitoring for database connections
+# Note:  No authentication is required for IGA r15 deployment for jboss-cli
+#
+#  Run the below command when IGA r15 is fully running as the 'igx' user:     [After the message:   CA IAM FW Startup Sequence Complete. ]
+#    Avoid this message:  [Failed to connect to the controller: Timeout waiting for the system to boot.]
+#
+# /opt/brcm/iga/inst/wildfly-idm/bin/jboss-cli.sh --connect  --controller=remote+https://localhost:9993 --file=enable-jdbc-stats-for-apm-monitoring.cli
+#
+#  IGA r15  data-sources:
+#  pool-WPDS  pool-archive  pool-auditDbDataSource  pool-idm   pool-objectstore   pool-reportsnapshot
+#
+# Monitor with:    https://apmgw.dxi-na1.saas.broadcom.com/54b69545fe0b44e4a8614e5815a3ab6f/digital-oi/apm-metric-view
+#
+# The final :reload starts a new deployment with JDBC tracing armed to assist with analysis of Startup Step 1 and Startup Step 2
+
+# Take snapshot of the IGA r15 idm.xml before any modification.
+:take-snapshot
+
+# Run the below commands in batch mode, to prevent any possible mis-typing or missing attributes from being touched.
+batch
+/subsystem=datasources/data-source=pool-idm:write-attribute(name=statistics-enabled,value=true)
+/subsystem=datasources/data-source=pool-objectstore:write-attribute(name=statistics-enabled,value=true)
+/subsystem=datasources/data-source=pool-archive:write-attribute(name=statistics-enabled,value=true)
+/subsystem=datasources/data-source=pool-auditDbDataSource:write-attribute(name=statistics-enabled,value=true)
+/subsystem=datasources/data-source=pool-reportsnapshot:write-attribute(name=statistics-enabled,value=true)
+/subsystem=datasources/data-source=pool-WPDS:write-attribute(name=statistics-enabled,value=true)
+run-batch --verbose
+
+# Reload, as the alias 'igactl restart idm' will remove these updates.
+:reload
+
+
+# May review after the changes are made.
+#/subsystem=datasources/data-source=pool-idm:read-attribute(name=statistics-enabled)
+#/subsystem=datasources/data-source=pool-idm:read-attribute(name=jndi-name)
+#/subsystem=datasources/data-source=pool-idm/statistics=pool:read-resource(include-runtime=true)
+
+#/subsystem=datasources/data-source=pool-objectstore:read-attribute(name=statistics-enabled)
+#/subsystem=datasources/data-source=pool-objectstore:read-attribute(name=jndi-name)
+#/subsystem=datasources/data-source=pool-objectstore/statistics=pool:read-resource(include-runtime=true)
+
+#/subsystem=datasources/data-source=pool-archive:read-attribute(name=statistics-enabled)
+#/subsystem=datasources/data-source=pool-archive:read-attribute(name=jndi-name)
+#/subsystem=datasources/data-source=pool-archive/statistics=pool:read-resource(include-runtime=true)
+
+#/subsystem=datasources/data-source=pool-auditDbDataSource:read-attribute(name=statistics-enabled)
+#/subsystem=datasources/data-source=pool-auditDbDataSource:read-attribute(name=jndi-name)
+#/subsystem=datasources/data-source=pool-auditDbDataSource/statistics=pool:read-resource(include-runtime=true)
+
+#/subsystem=datasources/data-source=pool-reportsnapshot:read-attribute(name=statistics-enabled)
+#/subsystem=datasources/data-source=pool-reportsnapshot:read-attribute(name=jndi-name)
+#/subsystem=datasources/data-source=pool-reportsnapshot/statistics=pool:read-resource(include-runtime=true)
+
+#/subsystem=datasources/data-source=pool-WPDS:read-attribute(name=statistics-enabled)
+#/subsystem=datasources/data-source=pool-WPDS:read-attribute(name=jndi-name)
+#/subsystem=datasources/data-source=pool-WPDS/statistics=pool:read-resource(include-runtime=true)
+
+

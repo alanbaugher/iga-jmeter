@@ -1,0 +1,37 @@
+# IGA r15 use of jboss-cli.sh to update Wildfly monitoring for database connections
+# Note:  No authentication is required for IGA r15 deployment for jboss-cli
+#
+#  Run the below command when IGA r15 is fully running as the 'igx' user:     [After the message:   CA IAM FW Startup Sequence Complete. ]
+#    Avoid this message:  [Failed to connect to the controller: Timeout waiting for the system to boot.]
+#
+# /opt/brcm/iga/inst/wildfly-idm/bin/jboss-cli.sh --connect  --controller=remote+https://localhost:9993 --file=focus_on_jdbc_calls_during_startup.cli
+#
+#  IGA r15  data-sources:
+#  pool-WPDS  pool-archive  pool-auditDbDataSource  pool-idm   pool-objectstore   pool-reportsnapshot
+#
+# Monitor with:    tail -F /opt/brcm/iga/logs/idm/server.log 
+#
+# The final :reload starts a new deployment with JDBC tracing armed to assist with analysis of Startup Step 1 and Startup Step 2
+
+# Take snapshot of the IGA r15 idm.xml before any modification.
+:take-snapshot
+
+# Run the below commands in batch mode, to prevent any possible mis-typing or missing attributes from being touched.
+batch
+/subsystem=logging/logger=jboss.jdbc.spy:add(level=TRACE,use-parent-handlers=true)
+/subsystem=datasources/data-source=pool-objectstore:write-attribute(name=spy,value=true)
+/subsystem=datasources/data-source=pool-idm:write-attribute(name=spy,value=true)
+/subsystem=datasources/data-source=pool-archive:write-attribute(name=spy,value=true)
+/subsystem=datasources/data-source=pool-auditDbDataSource:write-attribute(name=spy,value=true)
+/subsystem=datasources/data-source=pool-reportsnapshot:write-attribute(name=spy,value=true)
+/subsystem=datasources/data-source=pool-WPDS:write-attribute(name=spy,value=true)
+run-batch
+
+# Review after the changes are made.
+/subsystem=logging/logger=jboss.jdbc.spy:read-resource
+/subsystem=logging/root-logger=ROOT:read-attribute(name=handlers)
+:read-attribute(name=server-state)
+
+# Reload, as the alias 'igactl restart idm' will remove these updates.
+:reload
+
